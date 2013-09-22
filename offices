@@ -13,9 +13,9 @@
                 {
                     "method": "GET",
                     "summary": "Finds all offices",
-                    "notes": "Returns a list of all offices, allowing you to filter by state and keyword query. You can also apply a custom callback to the JSON response.",
-                    "nickname": "getFacilities",
-                    "type": "facilities",
+                    "notes": "Returns a list of all offices, allowing you to filter by state and keyword query.",
+                    "nickname": "getOffices",
+                    "type": "offices",
                     "parameters": [
                         {
                             "name": "query",
@@ -23,23 +23,33 @@
                             "required": false,
                             "allowMultiple": false,
                             "dataType": "string",
-                            "paramType": "query"
-                        },
-                        {
-                            "name": "state",
-                            "description": "a us state to filter facilities by",
-                            "required": false,
-                            "allowMultiple": false,
-                            "dataType": "string",
-                            "paramType": "query"
-                        },
-                        {
-                            "name": "callback",
-                            "description": "the callback for API call",
-                            "required": false,
-                            "allowMultiple": false,
-                            "dataType": "string",
-                            "paramType": "query"
+                            "paramType": "query",
+							"applyTo": [
+                                {
+                                    "property": "office"
+                                },
+                                {
+                                    "property": "address_1"
+                                },
+                                {
+                                    "property": "address_2"
+                                },
+                                {
+                                    "property": "city"
+                                },
+                                {
+                                    "property": "state"
+                                },
+                                {
+                                    "property": "zip"
+                                },
+                                {
+                                    "property": "phone"
+                                },
+                                {
+                                    "property": "email"
+                                }
+                            ]                           
                         }
                     ],
                     "produces": [
@@ -74,14 +84,6 @@
                             "allowMultiple": false,
                             "dataType": "integer",
                             "paramType": "path"
-                        },
-                        {
-                            "name": "callback",
-                            "description": "the callback for API call",
-                            "required": false,
-                            "allowMultiple": false,
-                            "dataType": "string",
-                            "paramType": "query"
                         }
                     ],
                     "responseMessages": [
@@ -99,7 +101,7 @@
         }
     ],
     "models": {
-        "Offices": {
+        "offices": {
             "id": "offices",
             "properties": {
                 "id": {
